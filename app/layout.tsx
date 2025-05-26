@@ -2,6 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from './NavBar'
+import AuthProvider from './auth/Provider'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,10 +18,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>
-        <NavBar />
-        <main className='p-5'>{children}</main>
+        <AuthProvider>
+          <NavBar />
+          <main className='p-5'>{children}</main>
+        </AuthProvider>
       </body>
     </html>
   )
